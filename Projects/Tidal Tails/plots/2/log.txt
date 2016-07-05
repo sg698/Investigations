@@ -1,0 +1,8 @@
+
+
+Fixed =		True
+N =		20000
+rec_n =		100
+f =		<_io.TextIOWrapper name='/home/ac846/Summer Project/Investigations/Projects/Tidal Tails/plots/2/log.txt' mode='w' encoding='UTF-8'>
+e =		1.0
+T =		['00', '03', '37']
