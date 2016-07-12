@@ -29,15 +29,21 @@ def plot_levels(unperturb_wf,unperturb_erg,potential,params,x_lims = [-0.1,0.1],
 
 def first_order_energy_sft(n,H,unperturb_wf,params,limits = [-np.inf,np.inf]):
     
-    def combine_functions(H,params):
+    def combine_functions(m):
         def integrand(x):
-            psi_n = unperturb_wf(params,n)
-            return H(x)*psi_n(x)*psi_n(x)
+            psi_m = unperturb_wf(params,m)
+            return H(x)*psi_m(x)*psi_m(x)
         return integrand
     
-    E, E_err = quad(combine_functions(H,params),limits[0],limits[1])
-    
-    return E
+    if hasattr(n, "__len__"):
+        E = []
+        for i in n:
+        	E_n, E_errn = quad(combine_functions(i),limits[0],limits[1])
+                E.append(E_n)
+        return E
+    else:
+        E, E_err = quad(combine_functions(n),limits[0],limits[1])
+        return E
 
 def first_order_wf(n,H,unperturb_wf,unperturb_erg,params,tolerance = 0.01, limits = [-np.inf,np.inf], return_list = False):
     
