@@ -38,7 +38,7 @@ def first_order_energy_sft(n,H,unperturb_wf,params,limits = [-np.inf,np.inf]):
     if hasattr(n, "__len__"):
         E = []
         for i in n:
-        	E_n, E_errn = quad(combine_functions(i),limits[0],limits[1])
+                E_n, E_errn = quad(combine_functions(i),limits[0],limits[1])
                 E.append(E_n)
         return E
     else:
